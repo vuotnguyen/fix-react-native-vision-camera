@@ -45,9 +45,9 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 
     do {
       try data.write(to: url)
-      let exif = photo.metadata["{Exif}"] as? [String: Any]
-      let width = exif?["PixelYDimension"]
-      let height = exif?["PixelXDimension"]
+      	let image = UIImage(data: data);
+	let width = image?.size.width
+	let height = image?.size.height
 
       promise.resolve([
         "path": tempFilePath,
